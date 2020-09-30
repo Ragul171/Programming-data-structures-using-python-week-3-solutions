@@ -4,11 +4,18 @@ if the absolute difference between each adjacent pair of elements strictly decre
  example : >>> contracting([9,2,7,3,1])
              True '''
 def contracting(l):
-    for i in range(0,len(l)):
-        if(l[i]-l[i+1]>l[i+1]-l[i+2]):
-            return True
+    s=0
+    for i in range(0,len(l)-2):
+        if(abs(l[i]-l[i+1])>abs(l[i+1]-l[i+2])):
+            s+=1
         else:
-            return False
+            s=0
+        if s == 0:
+            break
+    if s != 0:
+      return True
+    else:
+      return False
 
 '''QUESTION 2:
 In a list of integers l, the neighbours of l[i] are l[i-1] and l[i+1]. l[i] is a hill if it is strictly greater than its neighbours 
